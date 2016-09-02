@@ -1,3 +1,11 @@
+/* Font smoother on OS X */
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-family: 'Noto Sans TC', sans-serif!important;
+}
 /* Section1 */
 .section1 {
   /* Location of the image */

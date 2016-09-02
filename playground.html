@@ -3,7 +3,7 @@
 <head>
 <!-- Metas -->
 <meta charset="utf-8">
-<title>98萬國 - 歡迎頁 | ITAC</title>
+<title>98萬國 - 解謎區 | ITAC</title>
 <!-- Metas -->
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1, user-scalable=no" />
   <meta name="author" content="KaiYi.C">
@@ -33,30 +33,25 @@
   <meta name="theme-color" content="#DB2828">
 <!-- CSSs -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
-  <link rel="stylesheet" href="assets/css/indexStyle.css">
+  <link rel="stylesheet" href="assets/css/playgroundStyle.css">
 <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
-  <script src="assets/js/indexMain.js"></script>
+  <script src="assets/js/playgroundMain.js"></script>
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
 <body>
 <!-- Section1 -->
-  <section class="section1">
-    <content class="section1-content">
-      <br />
-      <img src="assets/img/icon.png" class="img-icon"><br /><br />
-      <img src="assets/img/itac.png" class="img-itac"><br /><br /><br /><br />
-      <div class="ui icon input">
-        <input type="text" placeholder="請輸入您的學號" id="userID">
-        <i class="inverted circular arrow right link icon" onclick="start()"></i>
-      </div><br /><br />
-      <p style="color: rgba(255, 255, 255, 0.8); cursor: pointer;" onclick="qa()">遊戲說明</p>
+  <section class="bg" data-scroll-index="1">
+    <content class="content">
+      <div class="ui one column center aligned container">
+        <div class="column">
+          <h1 id="welcomeMessage">Hi！</h1>
+        </div>
+      </div>
     </content>
   </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
 </body>

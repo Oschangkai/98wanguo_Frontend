@@ -1,0 +1,24 @@
+/* Font smoother on OS X */
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-family: 'Noto Sans TC', sans-serif!important;
+  color: white;
+  font-weight: 200;
+}
+.bg {
+  background-color: black;
+  /*
+  background-image: -webkit-radial-gradient(rgb(230, 80, 80), rgb(0, 0, 0));
+  background-image:    -moz-radial-gradient(rgb(230, 80, 80), rgb(0, 0, 0));
+  background-image:      -o-radial-gradient(rgb(230, 80, 80), rgb(0, 0, 0));
+  background-image:         radial-gradient(rgb(230, 80, 80), rgb(0, 0, 0));*/
+}
+.content {
+  display: table-cell;
+  padding-top: 50px;
+  height: 100vh;
+  width: 100vw;
+}
