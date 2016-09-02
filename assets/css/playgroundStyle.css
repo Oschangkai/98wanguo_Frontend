@@ -9,12 +9,16 @@ body {
   font-weight: 200;
 }
 .bg {
+  /* Location of the image */
+  background-image: url(../img/icon-opa5.png);
+  /* Image is centered vertically and horizontally at all times */
+  background-position: center center;
+  /* Image doesn't repeat */
+  background-repeat: no-repeat;
+  /* Makes the background image rescale based on its container's size */
+  background-size: 70vw;
+  /* Background color that will be displayed while the background image is loading */
   background-color: black;
-  /*
-  background-image: -webkit-radial-gradient(rgb(230, 80, 80), rgb(0, 0, 0));
-  background-image:    -moz-radial-gradient(rgb(230, 80, 80), rgb(0, 0, 0));
-  background-image:      -o-radial-gradient(rgb(230, 80, 80), rgb(0, 0, 0));
-  background-image:         radial-gradient(rgb(230, 80, 80), rgb(0, 0, 0));*/
 }
 .content {
   display: table-cell;
