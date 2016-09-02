@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
   <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/android-icon-192x192.png">
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png"  >
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
   <link rel="manifest" href="assets/favicon/manifest.json">
   <meta name="msapplication-TileColor" content="#DB2828">
@@ -34,7 +34,9 @@
 <!-- CSSs -->
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/playgroundStyle.css">
+  <link rel="stylesheet" href="assets/css/send.css">
 <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.js"></script>
@@ -47,11 +49,57 @@
 <!-- Section1 -->
   <section class="bg">
     <content class="content">
-      <div class="ui one column center aligned container">
+      <!-- Title -->
+      <div class="ui one column center aligned container grid welcomeMessage">
         <div class="column">
           <h1 id="welcomeMessage">Hi！</h1>
         </div>
       </div>
+      <!-- Btn Group1 -->
+      <div class="ui one column center aligned container grid">
+        <div class="column">
+          <button class="ui huge inverted green button" id="btn1">btn1</button>
+        </div>
+      </div>
+      <!-- Btn Send -->
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800">
+        <defs>
+          <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+            <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+          </filter>
+          <filter id="goo-no-comp">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+            <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+          </filter>
+        </defs>
+      </sg>
+      <div class="send">
+        <div class="send-indicator">
+          <div class="send-indicator-dot"></div>
+          <div class="send-indicator-dot"></div>
+          <div class="send-indicator-dot"></div>
+          <div class="send-indicator-dot"></div>
+        </div>
+        <button class="send-button">
+          <div class="sent-bg"></div>
+          <i class="fa fa-send send-icon"></i>
+          <i class="fa fa-check sent-icon"></i>
+          <i class="fa fa-times sent-icon"></i>
+        </button>
+      </div>
+      <!-- Btn Group2 -->
+      <div class="ui two column center aligned container grid">
+        <div class="column">
+          <button class="ui huge inverted orange button" id="btn2">btn2</button>
+        </div>
+        <div class="column">
+          <button class="ui huge inverted blue button" id="btn3">btn3</button>
+        </div>
+      </div>
     </content>
   </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="assets/js/send.js"></script>
 </body>
