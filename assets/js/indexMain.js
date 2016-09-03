@@ -22,7 +22,7 @@ function start(){
 function qa() {
   sweetAlert({
     title: "遊戲說明",
-    text: "<p style=\"text-align: left;\">從提示訊息中尋找校園三隅(限操場及操場附近)，並把紙上的密碼輸入到泡泡中。完成所有的點後，按下中間的泡泡即可通關！</p><br /><p style=\"text-align: left;\"><b>注意：</b>完成後會跳轉到禮物領取頁，請回到63號攤位由學長姐幫忙按下領取鍵唷！獎品數量有限，恕不多發</p>",
+    text: "<p style=\"text-align: left;\">從提示訊息中尋找校園三隅(限操場及操場附近)，並把紙上的密碼輸入到泡泡中，完成所有的點後即可通關！</p><br /><p style=\"text-align: left;\"><b>注意：</b>完成後會跳轉到禮物領取頁，請回到63號攤位由學長姐幫忙按下領取鍵唷！獎品數量有限，恕不多發</p>",
     html: true,
     type: "info",
   })

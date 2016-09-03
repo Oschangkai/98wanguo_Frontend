@@ -8,6 +8,9 @@ body {
   color: white;
   font-weight: 200;
 }
+.sweet-alert {
+  color: black;
+}
 .bg {
   /* Location of the image */
   background-image: url(../img/icon-opa5.png);

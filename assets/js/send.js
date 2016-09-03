@@ -20,12 +20,10 @@ $(document).ready(function(){
 			filter:filter,
 		});
 	}
-
 	//黏在一起
 	function setGoo(){
 		setFilter("url(#goo)");
 	}
-
 	//不黏在一起
 	function setGooNoComp(){
 		setFilter("url(#goo-no-comp)");
@@ -35,7 +33,6 @@ $(document).ready(function(){
 		if(locked) return;
 
 		locked=true;
-
 
 		TweenMax.to($sendIcon,0.3,{
 			x:100,
@@ -102,7 +99,6 @@ $(document).ready(function(){
 					ease:Back.easeOut
 				});
 
-
 				// back to normal
 				setTimeout(function(){
 					TweenMax.to($sentBg,0.4,{
@@ -130,7 +126,7 @@ $(document).ready(function(){
 			},1000);
 
 		},3000+(Math.random()*3000))
-	} // send function 的結尾
+	} // End of send
 
 
 	function setupCircle($obj){
@@ -147,7 +143,7 @@ $(document).ready(function(){
 			}
 			updateCirclePos();
 		}
-	} // setupCircle 的結尾
+	} // End of setupCircle
 
 
 	function startCircleAnim($obj,radius,delay,startDuration,loopDuration){
@@ -165,7 +161,7 @@ $(document).ready(function(){
 			ease:Linear.easeNone,
 			repeat:-1
 		});
-	} // startCircleAnim 的結尾
+	} // End of startCircleAnim
 
 
 	function stopCircleAnim($obj,duration){
@@ -176,68 +172,62 @@ $(document).ready(function(){
 				TweenMax.killTweensOf($obj.data("circle"));
 			}
 		});
-	}// stopCircleAnim 的結尾
+	}// End of stopCircleAnim
 
 	// 輸入密鑰
-	function inputKey(){
+	function inputKey() {
 		swal({
 			 title: "輸入密鑰",
 			 text: "",
-			 type: "input",   showCancelButton: true,
-			 closeOnConfirm: true,
-			 animation: "slide-from-top",
-			 inputPlaceholder: "Write key"
+			 type: "input",
+			 showCancelButton: true,
+			 closeOnConfirm: false,
+			 inputPlaceholder: "Place your key here"
 		 },
-		function(inputValue){
-			if (inputValue === false)
-				return false;
-			if (inputValue === "")
-			{
+		function(inputValue) {
+			if (inputValue === false) return false;
+			if (inputValue != "") sweetAlert.close();
+			if (inputValue === "") {
 				swal.showInputError("必須要有值");
 				return false;
 			}
+
 			sendKey(inputValue);
 			return false;
-
-
 		});
+
 	}
 
 	// ajax 送出密鑰
 	function sendKey(key){
-
 		var jsonForm={};
 		jsonForm["key"] = key;
 		jsonForm = JSON.stringify(jsonForm);
 		$.ajax({
-
+					//Data
           url: "https://98wanguobackend.itaclub.asia/api/v1.0/user/1053333",
           data: {"jsonForm":jsonForm},
           type: "POST",
           datatype: "json",
 
+					//If Success
           success: function(msg) {
-
             msg=JSON.parse(msg);
 						receive = msg;
 						send();
             if(msg["status"]!=true){
-            //alert(msg["reason"]);
-            return msg;
-
+            	//alert(msg["reason"]);
+            	return msg;
             }
           return msg;
-
-
-
           },
+					//If Error
           error: function(xhr, ajaxOptions, thrownError) {
             alert(xhr.status);
             alert(thrownError);
-
           }
+
         });
 	}
-
 
 })
