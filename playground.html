@@ -35,6 +35,7 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2/semantic.min.css'>
   <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
   <link rel="stylesheet" href="assets/css/playgroundStyle.css">
   <link rel="stylesheet" href="assets/css/send.css">
 <!-- Scripts -->
@@ -83,10 +84,14 @@
           <div class="send-indicator-dot"></div>
         </div>
         <button class="send-button">
-          <div class="sent-bg"></div>
+          <!-- 送出後的背景顏色 -->
+          <div class="success-bg"></div>
+          <div class="error-bg"></div>
+          <!-- 圖標 -->
           <i class="fa fa-send send-icon"></i>
-          <i class="fa fa-check sent-icon"></i>
-          <i class="fa fa-times sent-icon"></i>
+          <i class="fa fa-check success-icon"></i>
+          <i class="fa fa-times fail-icon"></i>
+          <i class="fa fa-gift gift-icon" ></i>
         </button>
       </div>
       <!-- Btn Group2 -->
@@ -101,5 +106,6 @@
     </content>
   </section>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.min.js"></script>
   <script src="assets/js/send.js"></script>
 </body>
