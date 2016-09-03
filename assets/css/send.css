@@ -4,7 +4,7 @@
 	height: 200px;
 	margin: 0 auto;
 	-webkit-filter: url("#goo");
-	filter: url("../send.html#goo");
+	filter: url("../../playground.html#goo");
 }
 
 .send-button {
