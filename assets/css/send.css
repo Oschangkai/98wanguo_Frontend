@@ -24,8 +24,18 @@
 	overflow: hidden;
 }
 
-.sent-bg{
+.success-bg{
 	background: #5af158;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.error-bg{
+	background: #DB2828;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -40,7 +50,15 @@
 	margin: -2px 0 0 -2px;
 }
 
-.sent-icon {
+.success-icon {
+	display: none;
+}
+
+.fail-icon {
+	display: none;
+}
+
+.gift-icon {
 	display: none;
 }
 
