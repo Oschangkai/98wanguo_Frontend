@@ -1,4 +1,17 @@
+/*解析url傳值（userID)*/
+function getUrlVars() {
+	var vars = {};
+	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&#]*)/gi,
+		function(m,key,value) {
+			vars[key] = value;
+		}
+	);
+	return vars;
+}
+/*end*/
+
 $(document).ready(function(){
+	var userID=getUrlVars()["userID"];
 	var receive;
 	var locked=false;
 	var $sendButton=$(".send-button")
@@ -192,20 +205,20 @@ $(document).ready(function(){
 				return false;
 			}
 
-			sendKey(inputValue);
+			sendKey(inputValue,userID);
 			return false;
 		});
 
 	}
 
 	// ajax 送出密鑰
-	function sendKey(key){
+	function sendKey(key,userID){
 		var jsonForm={};
 		jsonForm["key"] = key;
 		jsonForm = JSON.stringify(jsonForm);
 		$.ajax({
 					//Data
-          url: "https://98wanguobackend.itaclub.asia/api/v1.0/user/1053333",
+          url: "https://98wanguobackend.itaclub.asia/api/v1.0/user/"+userID,
           data: {"jsonForm":jsonForm},
           type: "POST",
           datatype: "json",
@@ -229,5 +242,6 @@ $(document).ready(function(){
 
         });
 	}
+
 
 })
