@@ -37,7 +37,7 @@ function login(userID)
     {
       $.ajax({
         type: "GET",
-        url: "https:"+ "//"+"98wanguobackend.itaclub.asia/api/v1.0/user/"+ userID,
+        url: "https:" + "//" + "98wanguobackend.itaclub.asia/api/v1.0/user/" + userID,
         dataType: "json",
         success: function(Jdata)
         {
