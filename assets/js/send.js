@@ -69,16 +69,24 @@ $(document).ready(function(){
 
 		//待轉換Icon
 		var $targetIcon;
-		$targetIcon = $successIcon;
+		$targetIcon = $giftIcon;
 
 		//轉換送出背景顏色
 		var $sentBg = $successBg;
+
+		// if 三個都通關
+		for(var i in receive["process"]){
+			if(receive["process"][i] == false && i !=0){
+				$targetIcon = $successIcon;
+			}
+		}
 
 		//key錯誤
 		if(receive["status"] == false){
 			$targetIcon = $failIcon;
 			$sentBg = $errorBg;
 		}
+
 
 		setTimeout(function(){
 			// success anim start
@@ -112,6 +120,12 @@ $(document).ready(function(){
 					ease:Back.easeOut
 				});
 
+				// 如果都通關了
+				// 中斷回復到原來
+				// 跳轉
+				if($targetIcon == $giftIcon){
+					return;
+				}
 				// back to normal
 				setTimeout(function(){
 					TweenMax.to($sentBg,0.4,{
@@ -206,7 +220,7 @@ $(document).ready(function(){
 			}
 
 			sendKey(inputValue,userID);
-			return false;
+			return;
 		});
 
 	}
