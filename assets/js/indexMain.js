@@ -47,7 +47,7 @@ function login(userID)
           var jsdata = jQuery.parseJSON(Jdata);
           alert("狀態："+jsdata.status);
           alert("是否註冊："+jsdata.isRegister);
-          alert("全部完成："+jsdata.process[0]);
+          alert("禮物取得："+jsdata.process[0]);
           alert("第一題："+jsdata.process[1]);
           alert("第二題："+jsdata.process[2]);
           alert("第三題："+jsdata.process[3]);
