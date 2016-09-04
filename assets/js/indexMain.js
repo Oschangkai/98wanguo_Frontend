@@ -16,7 +16,10 @@ function start(){
     })
   }
   else {
-    this.location.href="/playground.html";
+    //GET userID 到server，以此註冊
+    login(userID);
+    //跳轉頁面，並傳值userID
+    this.location.href="playground.html"+"?userID="+userID;
   }
 };
 function qa() {
@@ -27,6 +30,46 @@ function qa() {
     type: "info",
   })
 };
+//（註冊）jquery ajax 使用get傳送userID以此註冊
+function login(userID)
+{
+  $(document).ready(function()
+    {
+      $.ajax({
+        type: "GET",
+        url: "https:"+ "//"+"98wanguobackend.itaclub.asia/api/v1.0/user/"+ userID,
+        dataType: "json",
+        success: function(Jdata)
+        {
+          /* 測試用：取回數據使用
+          alert("SUCCESS!!!");
+          //解析json,並叫出各值
+          var jsdata = jQuery.parseJSON(Jdata);
+          alert("狀態："+jsdata.status);
+          alert("是否註冊："+jsdata.isRegister);
+          alert("全部完成："+jsdata.process[0]);
+          alert("第一題："+jsdata.process[1]);
+          alert("第二題："+jsdata.process[2]);
+          alert("第三題："+jsdata.process[3]);
+          */
+        },
+        /*  jqXHR.status
+        0 - (未初始化)還沒有調用send()方法
+        1 - (载入)以調用send()方法，正在發送請求
+        2 - (載入完成)send()方法執行完成，
+        3 - (交互)正在解析響應內容
+        4 - (完成)響應內容解析完成，可以在客戶端調用了
+        */
+        error: function(jqXHR)
+        {
+          alert("錯誤(jqXHR.status):"+jqXHR.status);
+        },
+        //（是否非同步請求）不加這個參數，chrome,safari,皆會ajax請求錯誤(jqXHR.status==0)
+        //用來在跳頁之前處理好ajax請求
+        async : false
+        })
+    })
+}
 window.onload = function() {
   console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;')
 }
