@@ -22,6 +22,19 @@ $(document).ready(function(){
 		,$successBg=$(".success-bg")
 		,$errorBg=$(".error-bg")
 		,$indicatorDots=$(".send-button,.send-indicator-dot")
+	/*頁面載入完成之後馬上確認狀態,並把狀態放進receive*/
+	checkStatus(userID);
+	//如果沒領過禮物，而且全對，直接送出讓他跑一次動畫變成禮物按鈕
+	if(receive.process[0]==false&&receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
+	{
+		send();
+	}
+	//如果有領過禮物而且全對，直接跳轉到禮物頁而且顯示領過禮物
+	else if(receive.process[0]==true&&receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
+	{
+		//跳轉
+	}
+	/*end*/
 	$sendButton.click(function(event) {
 		inputKey();
 	});
@@ -257,5 +270,44 @@ $(document).ready(function(){
         });
 	}
 
+	function checkStatus(userID)
+	{
+		$.ajax({
+			type: "GET",
+			url: "https:"+ "//"+"98wanguobackend.itaclub.asia/api/v1.0/user/"+ userID,
+			dataType: "json",
+			success: function(Jdata)
+			{
+				//測試用：取回數據使用
+				//alert("SUCCESS!!!");
+				//解析json,並叫出各值
+				var jsdata = jQuery.parseJSON(Jdata);
+				receive=jsdata;
+				/*
+				alert("狀態："+jsdata.status);
+				alert("是否註冊："+jsdata.isRegister);
+				alert("禮物取得："+jsdata.process[0]);
+				alert("第一題："+jsdata.process[1]);
+				alert("第二題："+jsdata.process[2]);
+				alert("第三題："+jsdata.process[3]);
+				*/
+
+			},
+			/*  jqXHR.status
+			0 - (未初始化)還沒有調用send()方法
+			1 - (载入)以調用send()方法，正在發送請求
+			2 - (載入完成)send()方法執行完成，
+			3 - (交互)正在解析響應內容
+			4 - (完成)響應內容解析完成，可以在客戶端調用了
+			*/
+			error: function(jqXHR)
+			{
+				alert("錯誤(jqXHR.status):"+jqXHR.status);
+			},
+			//（是否非同步請求）不加這個參數，chrome,safari,皆會ajax請求錯誤(jqXHR.status==0)
+			//用來在跳頁之前處理好ajax請求
+			async : false
+			})
+	}
 
 })
