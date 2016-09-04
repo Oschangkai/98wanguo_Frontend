@@ -8,6 +8,9 @@ body {
   color: white;
   font-weight: 200;
 }
+.sweet-alert {
+  color: black;
+}
 .bg {
   /* Location of the image */
   background-image: url(../img/icon-opa5.png);
@@ -22,7 +25,13 @@ body {
 }
 .content {
   display: table-cell;
-  padding-top: 50px;
+  /*padding-top: 50px;*/
+  vertical-align: middle;
+  text-align: center;
   height: 100vh;
   width: 100vw;
+}
+.welcomeMessage {
+  padding-bottom: 10vh!important;
+  margin-top: -15vh!important;
 }

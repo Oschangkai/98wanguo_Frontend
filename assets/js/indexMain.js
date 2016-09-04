@@ -8,7 +8,7 @@ function start(){
       type: "error",
     })
   }
-  else if (userID.search(/^(105)[0-9]{4}/) == -1) {
+  else if (userID.search(/^(10)[0-9]{5}/) == -1) {
     sweetAlert({
       title: "Oops~",
       text: "請確認一下你的學號有沒有正確喔ξ( ✿＞◡❛)",
@@ -22,7 +22,7 @@ function start(){
 function qa() {
   sweetAlert({
     title: "遊戲說明",
-    text: "<p style=\"text-align: left;\"><b>遊戲任務：</b><br />從提示訊息中找出校園中的三個點(限操場及操場附近)，並把紙上的密碼輸入到三個泡泡中。完成所有的點後，按下中間的泡泡即可通關！</p><br /><p style=\"text-align: left;\"><b>注意：</b><br />完成後會跳轉到禮物領取頁，請回到攤位(63號)由學長姐幫忙按下領取鍵唷！</p>",
+    text: "<p style=\"text-align: left;\">從提示訊息中尋找校園三隅(限操場及操場附近)，並把紙上的密碼輸入到泡泡中，完成所有的點後即可通關！</p><br /><p style=\"text-align: left;\"><b>注意：</b>完成後會跳轉到禮物領取頁，請回到63號攤位由學長姐幫忙按下領取鍵唷！獎品數量有限，恕不多發</p>",
     html: true,
     type: "info",
   })
