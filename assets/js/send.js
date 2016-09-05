@@ -26,9 +26,19 @@ $(document).ready(function(){
 	frontendChangeStatus();
 	//
 	/*end*/
-	$sendButton.click(function(event) {
+	if(receive.process[1]==false||receive.process[2]==false||receive.process[3]==false)
+	{
+		$sendButton.click(function(event) {
 		inputKey();
-	});
+		});
+	}
+	else if (receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
+	{
+		$sendButton.click(function(event) {
+		window.location.href="gift.html"+"?userID="+userID;
+		});
+	}
+	
 
 	function setFilter(filter){
 		$(".send").css({
@@ -235,11 +245,12 @@ $(document).ready(function(){
             msg = JSON.parse(msg);
 						receive = msg;
 						send();
+						/*
             if(msg["status"] != true){
             	//alert(msg["reason"]);
             	return msg;
             }
-          return msg;
+          return msg;*/
           },
 					//If Error
           error: function(xhr, ajaxOptions, thrownError) {

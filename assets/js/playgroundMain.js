@@ -9,7 +9,7 @@ window.onload = function() {
       allowEscapeKey: false
     },
     function(){
-      //window.location.href = "/";
+      window.location.href = "index.html";
     });
   }
   //end
