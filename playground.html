@@ -53,59 +53,43 @@
   <section class="bg">
     <content class="content">
       <!-- Title -->
-      <div class="ui one column center aligned container grid welcomeMessage">
+      <div class="ui one column center aligned container welcomeMessage">
         <div class="column">
           <h1 id="welcomeMessage">Hi！</h1>
         </div>
       </div>
       <!-- Btn Group1 -->
-      <div class="ui one column center aligned container grid">
+      <div class="ui one column center aligned container">
         <div class="column">
           <button class="ui huge inverted green button" id="btn1">btn1</button>
         </div>
       </div>
-      <!-- Btn Group -->
-      <div class="menu">
-        <div class="menu-wrapper">
-          <ul class="menu-items">
-            <li class="menu-item">
-              <button class="menu-item-button">
-                <i class="menu-item-icon icon icon-reply"></i>
-              </button>
-              <div class="menu-item-bounce"></div>
-            </li>
-            <li class="menu-item">
-              <button class="menu-item-button">
-                <i class="menu-item-icon icon icon-box"></i>
-              </button>
-              <div class="menu-item-bounce"></div>
-            </li>
-            <li class="menu-item">
-              <button class="menu-item-button">
-                <i class="menu-item-icon icon icon-trash"></i>
-              </button>
-              <div class="menu-item-bounce"></div>
-            </li>
-          </ul>
-          <!-- Btn Send -->
-          <div class="send">
-            <div class="send-indicator">
-              <div class="send-indicator-dot"></div>
-              <div class="send-indicator-dot"></div>
-              <div class="send-indicator-dot"></div>
-              <div class="send-indicator-dot"></div>
-            </div>
-            <button class="send-button menu-toggle-button">
-              <!-- 送出後的背景顏色 -->
-              <div class="success-bg"></div>
-              <div class="error-bg"></div>
-              <!-- 圖示 -->
-              <i class="fa fa-send send-icon"></i>
-              <i class="fa fa-check success-icon"></i>
-              <i class="fa fa-times fail-icon"></i>
-              <i class="fa fa-gift gift-icon" ></i>
-            </button>
-          </div>
+      <!-- Btn Send -->
+      <div class="send">
+        <div class="send-indicator">
+          <div class="send-indicator-dot"></div>
+          <div class="send-indicator-dot"></div>
+          <div class="send-indicator-dot"></div>
+          <div class="send-indicator-dot"></div>
+        </div>
+        <button class="send-button menu-toggle-button">
+          <!-- 送出後的背景顏色 -->
+          <div class="success-bg"></div>
+          <div class="error-bg"></div>
+          <!-- 圖示 -->
+          <i class="fa fa-send send-icon"></i>
+          <i class="fa fa-check success-icon"></i>
+          <i class="fa fa-times fail-icon"></i>
+          <i class="fa fa-gift gift-icon" ></i>
+        </button>
+      </div>
+      <!-- Btn Group2 -->
+      <div class="ui two column center aligned container grid">
+        <div class="column">
+          <button class="ui huge inverted orange button" id="btn2">btn2</button>
+        </div>
+        <div class="column">
+          <button class="ui huge inverted blue button" id="btn3">btn3</button>
         </div>
       </div>
       <!-- Send Btn SVG -->
@@ -122,25 +106,6 @@
           </filter>
         </defs>
       </svg>
-      <!-- Btn Group SVG -->
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0">
-			  <defs>
-			    <filter id="goo1">
-			      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-			      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo1" />
-			      <feComposite in="SourceGraphic" in2="goo1" operator="atop"/>
-			    </filter>
-			  </defs>
-			</svg>
-      <!-- Btn Group2 -->
-      <div class="ui two column center aligned container grid">
-        <div class="column">
-          <button class="ui huge inverted orange button" id="btn2">btn2</button>
-        </div>
-        <div class="column">
-          <button class="ui huge inverted blue button" id="btn3">btn3</button>
-        </div>
-      </div>
     </content>
   </section>
   <script src="assets/js/send.js"></script>
