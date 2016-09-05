@@ -2,7 +2,6 @@
 $(function(){
 
   var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
-
   $('div.giftBtn').mousedown(function(){
     $('div.giftBtn').addClass('giftBtn-mousedown')
   });
@@ -13,5 +12,6 @@ $(function(){
       $(this).removeClass('giftBtn-mousedown');
     });
   });
+
 
 });

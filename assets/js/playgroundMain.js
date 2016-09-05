@@ -1,3 +1,4 @@
+var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
 window.onload = function() {
   //解析userID
   var userID=getUrlVars()["userID"];
@@ -15,22 +16,31 @@ window.onload = function() {
   //end
   else document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
   console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
-  animation();
 };
-function animation() {
-  var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
 
-  $("#btn1").addClass('btn1Animation').one(Animated, function(){
-    $(this).removeClass('btn1Animation').delay(3780);//3780
-  });
-
-  $("#btn2").addClass('btn2Animation').one(Animated, function(){
-    $(this).removeClass('btn2Animation').delay(5210);//5210
-  });
-
-  $("#btn3").addClass('btn3Animation').one(Animated, function(){
-    $(this).removeClass('btn3Animation').delay(4330);//4330
-  });
+function animateBtn1() {
+  if ($("#btn1").is(':disabled') == false) {
+    $("#btn1").addClass('rubberBand').one(Animated, function(){
+      $(this).removeClass('rubberBand');
+    });
+    setTimeout("animateBtn1()",7780);
+  }
+}
+function animateBtn2() {
+  if ($("#btn2").is(':disabled') == false) {
+    $("#btn2").addClass('rubberBand').one(Animated, function(){
+      $(this).removeClass('rubberBand');
+    });
+    setTimeout("animateBtn2()",9210);
+  }
+}
+function animateBtn3() {
+  if ($("#btn3").is(':disabled') == false) {
+    $("#btn3").addClass('rubberBand').one(Animated, function(){
+      $(this).removeClass('rubberBand');
+    });
+    setTimeout("animateBtn3()",8330);
+  }
 }
 /*解析url傳值（userID)*/
 function getUrlVars() {
@@ -53,3 +63,6 @@ function hint2() {
 function hint3() {
   sweetAlert ("提示3", "碎念碎念碎念，多少亡魂矗立於炙熱之中，多少言語迴盪在耳邊風", "info");
 }
+animateBtn1();
+animateBtn2();
+animateBtn3();
