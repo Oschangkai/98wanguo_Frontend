@@ -3,6 +3,7 @@ window.onload = function() {
   //解析userID
   var userID=getUrlVars()["userID"];
   if (userID == undefined) {
+    userID = null;
     sweetAlert ({
       title: "糟糕！",
       text: "您似乎忘記登入了QQ 我們將帶您到登入頁",
@@ -10,7 +11,7 @@ window.onload = function() {
       allowEscapeKey: false
     },
     function(){
-      //window.location.href = "/";
+      window.location.href = "/";
     });
   }
   //end
