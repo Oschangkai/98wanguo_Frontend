@@ -11,29 +11,20 @@ function getUrlVars() {
 /*end*/
 
 $(document).ready(function(){
-	var userID=getUrlVars()["userID"];
+	var userID = getUrlVars()["userID"];
 	var receive;
 	var locked=false;
-	var $sendButton=$(".send-button")
-		,$sendIcon=$(".send-icon")
-		,$successIcon=$(".success-icon")
-		,$failIcon=$(".fail-icon")
+	var $sendButton = $(".send-button")
+		,$sendIcon = $(".send-icon")
+		,$successIcon = $(".success-icon")
+		,$failIcon = $(".fail-icon")
 		,$giftIcon = $(".gift-icon")
-		,$successBg=$(".success-bg")
-		,$errorBg=$(".error-bg")
-		,$indicatorDots=$(".send-button,.send-indicator-dot")
-	/*頁面載入完成之後馬上確認狀態,並把狀態放進receive*/
-	checkStatus(userID);
-	//如果沒領過禮物，而且全對，直接送出讓他跑一次動畫變成禮物按鈕
-	if(receive.process[0]==false&&receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
-	{
-		send();
-	}
-	//如果有領過禮物而且全對，直接跳轉到禮物頁而且顯示領過禮物
-	else if(receive.process[0]==true&&receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
-	{
-		//跳轉
-	}
+		,$successBg = $(".success-bg")
+		,$errorBg = $(".error-bg")
+		,$indicatorDots = $(".send-button,.send-indicator-dot")
+	/* 頁面載入完成之後馬上確認狀態,並把狀態放進receive */
+	frontendChangeStatus();
+	//
 	/*end*/
 	$sendButton.click(function(event) {
 		inputKey();
@@ -57,9 +48,7 @@ $(document).ready(function(){
 
 	function send(){
 		if(locked) return;
-
 		locked=true;
-
 		TweenMax.to($sendIcon,0.3,{
 			x:100,
 			y:-100,
@@ -89,7 +78,7 @@ $(document).ready(function(){
 
 		// if 三個都通關
 		for(var i in receive["process"]){
-			if(receive["process"][i] == false && i !=0){
+			if(receive["process"][i] == false && i != 0){
 				$targetIcon = $successIcon;
 			}
 		}
@@ -115,7 +104,6 @@ $(document).ready(function(){
 			// show icon$targetIcon
 			setTimeout(function(){
 				setGoo();
-
 				TweenMax.fromTo($targetIcon,1.5,{
 					display:"inline-block",
 					opacity:0,
@@ -136,7 +124,7 @@ $(document).ready(function(){
 				// 如果都通關了
 				// 中斷回復到原來
 				// 跳轉
-				if($targetIcon == $giftIcon){
+				if($targetIcon == $giftIcon) {
 					return;
 				}
 				// back to normal
@@ -161,10 +149,9 @@ $(document).ready(function(){
 							});
 						}
 					});
+					frontendChangeStatus()
 				},2000);
-
 			},1000);
-
 		},3000+(Math.random()*3000))
 	} // End of send
 
@@ -184,8 +171,6 @@ $(document).ready(function(){
 			updateCirclePos();
 		}
 	} // End of setupCircle
-
-
 	function startCircleAnim($obj,radius,delay,startDuration,loopDuration){
 		setupCircle($obj);
 		$obj.data("circle").radius=0;
@@ -202,8 +187,6 @@ $(document).ready(function(){
 			repeat:-1
 		});
 	} // End of startCircleAnim
-
-
 	function stopCircleAnim($obj,duration){
 		TweenMax.to($obj.data("circle"),duration,{
 			radius:0,
@@ -212,7 +195,7 @@ $(document).ready(function(){
 				TweenMax.killTweensOf($obj.data("circle"));
 			}
 		});
-	}// End of stopCircleAnim
+	} // End of stopCircleAnim
 
 	// 輸入密鑰
 	function inputKey() {
@@ -231,13 +214,10 @@ $(document).ready(function(){
 				swal.showInputError("必須要有值");
 				return false;
 			}
-
-			sendKey(inputValue,userID);
+			sendKey(inputValue, userID);
 			return;
 		});
-
 	}
-
 	// ajax 送出密鑰
 	function sendKey(key,userID){
 		var jsonForm={};
@@ -252,10 +232,10 @@ $(document).ready(function(){
 
 					//If Success
           success: function(msg) {
-            msg=JSON.parse(msg);
+            msg = JSON.parse(msg);
 						receive = msg;
 						send();
-            if(msg["status"]!=true){
+            if(msg["status"] != true){
             	//alert(msg["reason"]);
             	return msg;
             }
@@ -268,10 +248,9 @@ $(document).ready(function(){
           }
 
         });
-	}
+	} //End of sendKey
 
-	function checkStatus(userID)
-	{
+	function checkStatus(userID) {
 		$.ajax({
 			type: "GET",
 			url: "https:"+ "//"+"98wanguobackend.itaclub.asia/api/v1.0/user/"+ userID,
@@ -282,7 +261,7 @@ $(document).ready(function(){
 				//alert("SUCCESS!!!");
 				//解析json,並叫出各值
 				var jsdata = jQuery.parseJSON(Jdata);
-				receive=jsdata;
+				receive = jsdata;
 				/*
 				alert("狀態："+jsdata.status);
 				alert("是否註冊："+jsdata.isRegister);
@@ -308,6 +287,30 @@ $(document).ready(function(){
 			//用來在跳頁之前處理好ajax請求
 			async : false
 			})
+	} //End of checkStatus
+	function frontendChangeStatus() {
+		/* 頁面載入完成之後馬上確認狀態,並把狀態放進receive */
+		checkStatus(userID);
+		var giftStauts = receive.process[0];
+		var mission1 = receive.process[1];
+		var mission2 = receive.process[2];
+		var mission3 = receive.process[3];
+		//判斷狀態
+		if (mission1 && mission2 && mission3) {
+			if (giftStauts) {//全對，且領禮物了
+				this.location.href = "gift.html";
+			}
+			else {//全對，但沒領禮物
+				send();
+				$('#btn1').addClass('disabled');
+				$('#btn2').addClass('disabled');
+				$('#btn3').addClass('disabled');
+			}
+		} else {
+			if (mission1) $('#btn1').addClass('disabled');
+			if (mission2) $('#btn2').addClass('disabled');
+			if (mission3) $('#btn3').addClass('disabled');
+		}
+		return;
 	}
-
 })
