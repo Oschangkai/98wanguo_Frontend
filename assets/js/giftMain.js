@@ -39,7 +39,7 @@ window.onload = function() {
     sweetAlert ({
       title: "注意！",
       text: "恭喜您解完了所有謎題，並領取過禮物，破完了整個活動了！",
-      type: "warning",
+      type: "info",
       allowEscapeKey: false
     });
     //禮物按鈕變灰
@@ -53,7 +53,11 @@ window.onload = function() {
       $('div.giftBtn').mouseup(function(){
         sendKeyGift(userID);
         //禮物按鈕變灰
-        document.getElementById("giftBtn").style.backgroundColor = "grey";
+        var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+        $('div.giftBtn').addClass('giftBtn-success').one(Animated, function(){
+          document.getElementById("giftBtn").style.backgroundColor = "grey";
+        })
+        giftStauts = false;
         });
       });
     }
