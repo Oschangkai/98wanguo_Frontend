@@ -1,7 +1,7 @@
 var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
 window.onload = function() {
   //解析userID
-  var userID=getUrlVars()["userID"];
+  var userID = getUrlVars()["userID"];
   if (userID == undefined) {
     userID = null;
     sweetAlert ({
@@ -11,12 +11,15 @@ window.onload = function() {
       allowEscapeKey: false
     },
     function(){
-      window.location.href = "/";
+      window.location.href = "index.html";
     });
   }
-  //end
-  else document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
-  console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
+  else
+  {
+    document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
+    console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
+  }
+
 };
 
 function animateBtn1() {
