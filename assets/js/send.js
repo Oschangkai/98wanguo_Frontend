@@ -336,14 +336,14 @@ $(document).ready(function(){
 			}
 			else {//全對，但沒領禮物
 				send();
-				$('#btn1').addClass('disabled');
-				$('#btn2').addClass('disabled');
-				$('#btn3').addClass('disabled');
+				$('#btn1').prop('disabled', true);
+				$('#btn2').prop('disabled', true);
+				$('#btn3').prop('disabled', true);
 			}
 		} else {
-			if (mission1) $('#btn1').addClass('disabled');
-			if (mission2) $('#btn2').addClass('disabled');
-			if (mission3) $('#btn3').addClass('disabled');
+			if (mission1) $('#btn1').prop('disabled', true);
+			if (mission2) $('#btn2').prop('disabled', true);
+			if (mission3) $('#btn3').prop('disabled', true);
 		}
 		return;
 	}

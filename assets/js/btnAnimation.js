@@ -1,15 +1,17 @@
 /* https://youtu.be/CBQGl6zokMs */
 $(function(){
-  $('div.giftBtn').mousedown(function(){
-    $('div.giftBtn').addClass('giftBtn-mousedown').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-    function(){
-      $(this).removeClass('giftBtn-mousedown');
+
+  var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+
+    $('div.giftBtn').mousedown(function(){
+      $('div.giftBtn').addClass('giftBtn-mousedown')
     });
-  });
-  $('div.giftBtn').mouseup(function(){
-    $('div.giftBtn').addClass('giftBtn-mouseup').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-    function(){
-      $(this).removeClass('giftBtn-mouseup');
+
+    $('div.giftBtn').mouseup(function(){
+      $('div.giftBtn').addClass('giftBtn-mouseup').one(Animated, function(){
+        $(this).removeClass('giftBtn-mouseup');
+        $(this).removeClass('giftBtn-mousedown');
+      });
     });
-  });
+
 });

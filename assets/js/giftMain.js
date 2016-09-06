@@ -2,12 +2,16 @@
 var receive;
 //
 window.onload = function() {
+  console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
   //解析userID
   var userID=getUrlVars()["userID"];
   checkStatus(userID);
+  var giftStauts = receive.process[0];
+  var mission1 = receive.process[1];
+  var mission2 = receive.process[2];
+  var mission3 = receive.process[3];
   //使用者未登入
-  if (userID == undefined) 
-  {
+  if (userID == undefined) {
     sweetAlert ({
       title: "糟糕！",
       text: "您似乎忘記登入了QQ 我們將帶您到登入頁",
@@ -19,8 +23,7 @@ window.onload = function() {
     });
   }
   //有未作答完的情況
-  else if(receive.process[1]==false||receive.process[2]==false||receive.process[3]==false)
-  {
+  else if (mission1 == false || mission2 == false || mission3 == false) {
     sweetAlert ({
       title: "糟糕！",
       text: "您似乎有未解決的謎題QQ 我們將帶您到登入頁",
@@ -32,35 +35,29 @@ window.onload = function() {
     });
   }
   //全部作答完成，領過禮物
-  else if(receive.process[0]==true&&receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
-  { 
+  else if (mission1 && mission2 && mission3 && giftStauts) {
     sweetAlert ({
       title: "注意！",
       text: "恭喜您解完了所有謎題，並領取過禮物，破完了整個活動了！",
       type: "warning",
       allowEscapeKey: false
     });
-    //放置禮物按鈕變灰
-
+    //禮物按鈕變灰
+    document.getElementById("giftBtn").style.backgroundColor = "grey";
     //
     document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
-    console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
   }
-  else
-  {
-  //
-    if(receive.process[0]!=true)
-    {
+  else {
+    if(giftStauts != true) {
       $(function(){
       $('div.giftBtn').mouseup(function(){
         sendKeyGift(userID);
-        //然後放置一個變灰的
+        //禮物按鈕變灰
+        document.getElementById("giftBtn").style.backgroundColor = "grey";
         });
       });
-    } 
-  //
+    }
   document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
-  console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
   }
 };
 
@@ -112,11 +109,10 @@ function checkStatus(userID) {
       //用來在跳頁之前處理好ajax請求
       async : false
       })
-  } //End of checkStatus
+} //End of checkStatus
 
   // ajax 送出密鑰
-  function sendKeyGift(userID)
-  {
+  function sendKeyGift(userID) {
     var jsonForm={};
     jsonForm["key"] = "gift";
     jsonForm = JSON.stringify(jsonForm);
@@ -128,7 +124,7 @@ function checkStatus(userID) {
           datatype: "json",
 
           //If Success
-          success: function(Jdata) 
+          success: function(Jdata)
           {
             var jsdata = jQuery.parseJSON(Jdata);
             receive = jsdata;
@@ -142,5 +138,5 @@ function checkStatus(userID) {
           //用來在跳頁之前處理好ajax請求
           async : false
 
-          }); 
-  } //End of sendKey
+          });
+} //End of sendKey

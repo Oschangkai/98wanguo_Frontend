@@ -1,7 +1,9 @@
+var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
 window.onload = function() {
   //解析userID
-  var userID=getUrlVars()["userID"];
+  var userID = getUrlVars()["userID"];
   if (userID == undefined) {
+    userID = null;
     sweetAlert ({
       title: "糟糕！",
       text: "您似乎忘記登入了QQ 我們將帶您到登入頁",
@@ -12,14 +14,38 @@ window.onload = function() {
       window.location.href = "index.html";
     });
   }
-  else 
+  else
   {
     document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
     console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
   }
-  
+
 };
 
+function animateBtn1() {
+  if ($("#btn1").is(':disabled') == false) {
+    $("#btn1").addClass('rubberBand').one(Animated, function(){
+      $(this).removeClass('rubberBand');
+    });
+    setTimeout("animateBtn1()",7780);
+  }
+}
+function animateBtn2() {
+  if ($("#btn2").is(':disabled') == false) {
+    $("#btn2").addClass('rubberBand').one(Animated, function(){
+      $(this).removeClass('rubberBand');
+    });
+    setTimeout("animateBtn2()",9210);
+  }
+}
+function animateBtn3() {
+  if ($("#btn3").is(':disabled') == false) {
+    $("#btn3").addClass('rubberBand').one(Animated, function(){
+      $(this).removeClass('rubberBand');
+    });
+    setTimeout("animateBtn3()",8330);
+  }
+}
 /*解析url傳值（userID)*/
 function getUrlVars() {
 	var vars = {};
@@ -31,3 +57,16 @@ function getUrlVars() {
 	return vars;
 }
 /*end*/
+
+function hint1() {
+  sweetAlert ("提示1", "所謂伊人，在水一方", "info");
+}
+function hint2() {
+  sweetAlert ("提示2", "眾裡尋她千百度 驀然回首 那人卻在燈火闌珊處", "info");
+}
+function hint3() {
+  sweetAlert ("提示3", "碎念碎念碎念，多少亡魂矗立於炙熱之中，多少言語迴盪在耳邊風", "info");
+}
+animateBtn1();
+animateBtn2();
+animateBtn3();
