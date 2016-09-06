@@ -23,21 +23,26 @@ $(document).ready(function(){
 		,$errorBg = $(".error-bg")
 		,$indicatorDots = $(".send-button,.send-indicator-dot")
 	/* 頁面載入完成之後馬上確認狀態,並把狀態放進receive */
-	frontendChangeStatus();
+	frontendChangeStatus(true);
 	//
 	/*end*/
-	if(receive.process[1]==false||receive.process[2]==false||receive.process[3]==false)
-	{
-		$sendButton.click(function(event) {
-		inputKey();
-		});
-	}
-	else if (receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
-	{
-		$sendButton.click(function(event) {
+
+	//點擊icon的判斷，跳出輸出框，或是跳轉到禮物頁
+	$sendButton.click(function(event) {
+		//有沒解完的，跳出輸入框
+		if(receive.process[1]==false||receive.process[2]==false||receive.process[3]==false)
+		{
+			inputKey();
+		}
+		//都解完了就跳轉
+		else if (receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
+		{
 		window.location.href="gift.html"+"?userID="+userID;
-		});
-	}
+		}
+				
+	});
+	
+	
 	
 
 	function setFilter(filter){
@@ -97,6 +102,8 @@ $(document).ready(function(){
 		if(receive["status"] == false){
 			$targetIcon = $failIcon;
 			$sentBg = $errorBg;
+			//錯的不會回傳解題狀態，所以再GET一次
+			checkStatus(userID);
 		}
 
 
@@ -135,6 +142,8 @@ $(document).ready(function(){
 				// 中斷回復到原來
 				// 跳轉
 				if($targetIcon == $giftIcon) {
+					//這裏放這個才會讓最後一個hint變暗
+					frontendChangeStatus(false);
 					return;
 				}
 				// back to normal
@@ -159,7 +168,7 @@ $(document).ready(function(){
 							});
 						}
 					});
-					frontendChangeStatus()
+					frontendChangeStatus(false);
 				},2000);
 			},1000);
 		},3000+(Math.random()*3000))
@@ -299,9 +308,12 @@ $(document).ready(function(){
 			async : false
 			})
 	} //End of checkStatus
-	function frontendChangeStatus() {
+	function frontendChangeStatus(cehckstatusBool) {
 		/* 頁面載入完成之後馬上確認狀態,並把狀態放進receive */
-		checkStatus(userID);
+		if(cehckstatusBool)//看是否重新載入狀態
+		{
+			checkStatus(userID);
+		}		
 		var giftStauts = receive.process[0];
 		var mission1 = receive.process[1];
 		var mission2 = receive.process[2];
@@ -309,7 +321,18 @@ $(document).ready(function(){
 		//判斷狀態
 		if (mission1 && mission2 && mission3) {
 			if (giftStauts) {//全對，且領禮物了
-				this.location.href = "gift.html";
+				/*直接跳轉*/
+				//沒有傳userId而且直接跳轉所以我註解掉了
+				//this.location.href = "gift.html"+"?"+userID;
+				/*end*/
+
+				/*按一次跳轉*/
+				//剩下判斷寫在send()中，因為還要傳$sendButton進來才能，所以沒做在這
+				send();
+				$('#btn1').addClass('disabled');
+				$('#btn2').addClass('disabled');
+				$('#btn3').addClass('disabled');
+				/*end*/
 			}
 			else {//全對，但沒領禮物
 				send();

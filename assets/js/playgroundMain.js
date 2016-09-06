@@ -12,9 +12,12 @@ window.onload = function() {
       window.location.href = "index.html";
     });
   }
-  //end
-  else document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
-  console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
+  else 
+  {
+    document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
+    console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
+  }
+  
 };
 
 /*解析url傳值（userID)*/

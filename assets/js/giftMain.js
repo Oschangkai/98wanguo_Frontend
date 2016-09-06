@@ -19,7 +19,7 @@ window.onload = function() {
     });
   }
   //有未作答完的情況
-  else if(receive.process[1]==false||receive.process[2]==false||receive.process[3]==false&&location.href!="playground.html"+"?userID="+userID)
+  else if(receive.process[1]==false||receive.process[2]==false||receive.process[3]==false)
   {
     sweetAlert ({
       title: "糟糕！",
@@ -31,7 +31,8 @@ window.onload = function() {
       window.location.href = "index.html";
     });
   }
-  else if(receive[0]==true&&receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
+  //全部作答完成，領過禮物
+  else if(receive.process[0]==true&&receive.process[1]==true&&receive.process[2]==true&&receive.process[3]==true)
   { 
     sweetAlert ({
       title: "注意！",
@@ -39,12 +40,25 @@ window.onload = function() {
       type: "warning",
       allowEscapeKey: false
     });
+    //放置禮物按鈕變灰
+
+    //
     document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
     console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
   }
-  //end
   else
   {
+  //
+    if(receive.process[0]!=true)
+    {
+      $(function(){
+      $('div.giftBtn').mouseup(function(){
+        sendKeyGift(userID);
+        //然後放置一個變灰的
+        });
+      });
+    } 
+  //
   document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
   console.log('%c不要亂翻拉！', 'color: #f00; font-size: 50px;');
   }
@@ -99,3 +113,34 @@ function checkStatus(userID) {
       async : false
       })
   } //End of checkStatus
+
+  // ajax 送出密鑰
+  function sendKeyGift(userID)
+  {
+    var jsonForm={};
+    jsonForm["key"] = "gift";
+    jsonForm = JSON.stringify(jsonForm);
+    $.ajax({
+          //Data
+          url: "https://98wanguobackend.itaclub.asia/api/v1.0/user/"+ userID,
+          data: {"jsonForm":jsonForm},
+          type: "POST",
+          datatype: "json",
+
+          //If Success
+          success: function(Jdata) 
+          {
+            var jsdata = jQuery.parseJSON(Jdata);
+            receive = jsdata;
+          },
+          //If Error
+          error: function(jqXHR)
+          {
+            alert("錯誤(jqXHR.status):"+jqXHR.status);
+          },
+          //（是否非同步請求）不加這個參數，chrome,safari,皆會ajax請求錯誤(jqXHR.status==0)
+          //用來在跳頁之前處理好ajax請求
+          async : false
+
+          }); 
+  } //End of sendKey
