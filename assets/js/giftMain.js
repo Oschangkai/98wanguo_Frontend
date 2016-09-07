@@ -49,18 +49,34 @@ window.onload = function() {
   }
   else {
     if(giftStauts != true) {
-      $(function(){
-      $('div.giftBtn').mouseup(function(){
-        sendKeyGift(userID);
-        //禮物按鈕變灰
-        var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
-        $('div.giftBtn').addClass('giftBtn-success').one(Animated, function(){
-          document.getElementById("giftBtn").style.backgroundColor = "grey";
-        })
-        giftStauts = false;
-        });
-      });
-    }
+      	$(function(){
+      		$('div.giftBtn').mouseup(function(){
+      			swal({   
+      				title: "你確定要領取禮物了嗎？",   
+    				text: "點擊領取禮物之後，因為工作人員難以辨認，所以一律視為已領取禮物",   
+    				type: "warning",   
+    				showCancelButton: true,   
+    				confirmButtonColor: "#DD6B55",   
+    				confirmButtonText: "對，領取禮物!",   
+    				closeOnConfirm: true 
+    			}, 
+    			function(getBool){ 
+    				if(getBool)
+    				{
+						sendKeyGift(userID);
+        				//禮物按鈕變灰
+        				var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+        				$('div.giftBtn').addClass('giftBtn-success').one(Animated, function(){
+        					document.getElementById("giftBtn").style.backgroundColor = "grey";
+        				})
+        				giftStauts = false;
+    				}
+    			}
+    		);
+      			//checkAndSend(getBool,userID);     	
+        	});
+     	});
+  	}
   document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
   }
 };
@@ -143,4 +159,5 @@ function checkStatus(userID) {
           async : false
 
           });
-} //End of sendKey
+	} //End of sendKey
+
