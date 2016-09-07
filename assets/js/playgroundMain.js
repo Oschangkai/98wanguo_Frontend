@@ -27,7 +27,7 @@ function animateBtn1() {
     $("#btn1").addClass('rubberBand').one(Animated, function(){
       $(this).removeClass('rubberBand');
     });
-    setTimeout("animateBtn1()",7780);
+    setTimeout("animateBtn1()", 7888);
   }
 }
 function animateBtn2() {
@@ -35,7 +35,7 @@ function animateBtn2() {
     $("#btn2").addClass('rubberBand').one(Animated, function(){
       $(this).removeClass('rubberBand');
     });
-    setTimeout("animateBtn2()",9210);
+    setTimeout("animateBtn2()", 9111);
   }
 }
 function animateBtn3() {
@@ -43,7 +43,7 @@ function animateBtn3() {
     $("#btn3").addClass('rubberBand').one(Animated, function(){
       $(this).removeClass('rubberBand');
     });
-    setTimeout("animateBtn3()",8330);
+    setTimeout("animateBtn3()", 8444);
   }
 }
 /*解析url傳值（userID)*/
@@ -62,10 +62,12 @@ function hint1() {
   sweetAlert ("提示1", "所謂伊人，在水一方", "info");
 }
 function hint2() {
-  sweetAlert ("提示2", "眾裡尋她千百度 驀然回首 那人卻在燈火闌珊處", "info");
+  sweetAlert ("提示2", "眾裡尋她千百度，驀然回首，那人卻在燈火闌珊處", "info");
 }
 function hint3() {
-  sweetAlert ("提示3", "碎念碎念碎念，多少亡魂矗立於炙熱之中，多少言語迴盪在耳邊風", "info");
+  /*sweetAlert ("提示3", "碎念碎念碎念，多少亡魂矗立於炙熱之中，多少言語迴盪在耳邊風", "info");*/
+  /*sweetAlert ("提示3", "哲學的盡頭，兩盞車燈，在無盡的輪迴中，吞吐", "info");*/
+  sweetAlert ("提示3", "何不坐下，放下你那死盯遠方來車的視線", "info");
 }
 animateBtn1();
 animateBtn2();
