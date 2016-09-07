@@ -49,47 +49,47 @@ window.onload = function() {
   }
   else {
     if(giftStauts != true) {
-      	$(function(){
-      		$('div.giftBtn').mouseup(function(){
-      			swal({   
-      				title: "你確定要領取禮物了嗎？",   
-    				text: "點擊領取禮物之後，因為工作人員難以辨認，所以一律視為已領取禮物",   
-    				type: "warning",   
-    				showCancelButton: true,   
-    				confirmButtonColor: "#DD6B55",   
-    				confirmButtonText: "對，領取禮物!",   
-    				closeOnConfirm: true 
-    			}, 
-    			function(getBool){ 
-    				if(getBool)
-    				{
-						sendKeyGift(userID);
-        				//禮物按鈕變灰
-        				var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
-        				$('div.giftBtn').addClass('giftBtn-success').one(Animated, function(){
-        					document.getElementById("giftBtn").style.backgroundColor = "grey";
-        				})
-        				giftStauts = false;
-    				}
-    			}
-    		);
-      			//checkAndSend(getBool,userID);     	
-        	});
-     	});
-  	}
+        $(function(){
+          $('div.giftBtn').mouseup(function(){
+            swal({
+              title: "你確定要領取禮物了嗎？",
+              text: "一人只能領取一次禮物，當你按下確認後就不能領囉！請工作人員為你按下吧",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "對，領取禮物!",
+              closeOnConfirm: true
+          },
+          function(getBool){
+            if(getBool)
+            {
+            sendKeyGift(userID);
+                //禮物按鈕變灰
+                var Animated = "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend";
+                $('div.giftBtn').addClass('giftBtn-success').one(Animated, function(){
+                  document.getElementById("giftBtn").style.backgroundColor = "grey";
+                })
+                giftStauts = false;
+            }
+          }
+        );
+            //checkAndSend(getBool,userID);
+          });
+       });
+    }
   document.getElementById("welcomeMessage").innerHTML += "{" + userID + "}";
   }
 };
 
 /*解析url傳值（userID)*/
 function getUrlVars() {
-	var vars = {};
-	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&#]*)/gi,
-		function(m, key, value) {
-			vars[key] = value;
-		}
-	);
-	return vars;
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&#]*)/gi,
+    function(m, key, value) {
+      vars[key] = value;
+    }
+  );
+  return vars;
 }
 /*end*/
 
@@ -159,5 +159,4 @@ function checkStatus(userID) {
           async : false
 
           });
-	} //End of sendKey
-
+  } //End of sendKey
