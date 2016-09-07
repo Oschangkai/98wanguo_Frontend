@@ -67,7 +67,8 @@ function hint2() {
 function hint3() {
   /*sweetAlert ("提示3", "碎念碎念碎念，多少亡魂矗立於炙熱之中，多少言語迴盪在耳邊風", "info");*/
   /*sweetAlert ("提示3", "哲學的盡頭，兩盞車燈，在無盡的輪迴中，吞吐", "info");*/
-  sweetAlert ("提示3", "何不坐下，放下你那死盯遠方來車的視線", "info");
+  /*sweetAlert ("提示3", "何不坐下，放下你那死盯遠方來車的視線", "info");*/
+  sweetAlert ("提示3", "回家的路，旅人的嘆息，在悠久的時光中見證著。而我所能做的只有，目送兩盞車燈，遠去", "info");
 }
 animateBtn1();
 animateBtn2();
